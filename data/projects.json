@@ -1,0 +1,55 @@
+{
+  "projects": [
+    {
+      "id": "autonomous-rover",
+      "title": "Autonomous Rover",
+      "date": "2026-03",
+      "summary": "A four-wheel rover that maps a small room and navigates around obstacles using an ultrasonic sensor array and a custom motor driver board.",
+      "subsections": [
+        {
+          "title": "Chassis design",
+          "tags": ["mechanical", "3d-printing"],
+          "description": "Designed the frame in Fusion 360 and printed it in PETG for durability. Iterated through three versions to fix wheel clearance issues."
+        },
+        {
+          "title": "Motor driver board",
+          "tags": ["electrical"],
+          "description": "Designed a custom PCB with dual H-bridge motor drivers, routed in KiCad, and hand-soldered the first prototype."
+        },
+        {
+          "title": "Path planning",
+          "tags": ["programming"],
+          "description": "Implemented an A* search algorithm in C++ on an Arduino Mega to plan routes around detected obstacles in real time."
+        }
+      ]
+    },
+    {
+      "id": "solar-tracker",
+      "title": "Single-Axis Solar Tracker",
+      "date": "2025-11",
+      "summary": "A small solar panel mount that rotates to follow the sun across the day, improving energy capture over a fixed panel.",
+      "subsections": [
+        {
+          "title": "Slew mechanism",
+          "tags": ["mechanical"],
+          "description": "Designed a worm-gear drive to rotate the panel mount slowly and hold position without back-driving from wind load."
+        },
+        {
+          "title": "Light sensing circuit",
+          "tags": ["electrical"],
+          "description": "Built a comparator circuit from two photoresistors to detect which direction has more sunlight."
+        },
+        {
+          "title": "Control logic",
+          "tags": ["programming"],
+          "description": "Wrote the firmware that reads the sensor circuit and drives the stepper motor to track the sun throughout the day."
+        },
+        {
+          "title": "Mount bracket",
+          "tags": ["3d-printing"],
+          "description": "Printed a PLA bracket to hold the photoresistor pair at a fixed angle relative to the panel."
+        }
+      ]
+    }
+  ]
+}
