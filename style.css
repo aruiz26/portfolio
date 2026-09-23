@@ -33,6 +33,28 @@ main, header, footer {
   color: #555;
 }
 
+/* ---------- Resume download ---------- */
+.resume-download {
+  max-width: 760px;
+  margin: 1rem auto 0 auto;
+  padding: 0 1.25rem;
+}
+
+.resume-button {
+  display: inline-block;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.resume-button:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
 /* ---------- Tag nav ---------- */
 .tag-nav {
   max-width: 760px;
@@ -70,12 +92,14 @@ main, header, footer {
 }
 
 .project {
-  border-top: 1px solid #e2e2e2;
-  padding: 1.5rem 0;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .project:first-child {
-  border-top: none;
+  margin-top: 0;
 }
 
 .project-header {
@@ -89,6 +113,24 @@ main, header, footer {
 .project-title {
   margin: 0;
   font-size: 1.25rem;
+}
+
+.project-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-title a:hover {
+  text-decoration: underline;
+}
+
+.project-thumb {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
 }
 
 .project-date {
@@ -105,7 +147,7 @@ main, header, footer {
 /* ---------- Subsections ---------- */
 .subsection {
   padding: 0.75rem 0;
-  border-top: 1px dashed #eee;
+  border-top: 1px solid #eee;
 }
 
 .subsection:first-of-type {
@@ -135,6 +177,40 @@ main, header, footer {
   border-radius: 4px;
   padding: 0.15rem 0.5rem;
   color: #444;
+}
+
+/* ---------- Project detail page ---------- */
+.back-link {
+  display: inline-block;
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.project-detail-image {
+  display: block;
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.project-details p {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.subsections-heading {
+  font-size: 1rem;
+  color: #888;
+  margin: 2rem 0 0.5rem 0;
+  border-top: 1px solid #e2e2e2;
+  padding-top: 1.5rem;
 }
 
 /* ---------- Misc ---------- */

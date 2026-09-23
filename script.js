@@ -10,8 +10,12 @@ async function loadProjects() {
     if (!response.ok) throw new Error("Failed to load projects.json");
     const data = await response.json();
 
-    // Sort newest first by date (expects "YYYY-MM" or "YYYY-MM-DD" strings)
-    allProjects = data.projects.sort((a, b) => (a.date < b.date ? 1 : -1));
+    // Sort newest first by date (expects "YYYY-MM" or "YYYY-MM-DD" strings).
+    // Projects with "hidden": true are skipped entirely — handy for
+    // temporarily taking a project off the site without deleting its data.
+    allProjects = data.projects
+      .filter(project => !project.hidden)
+      .sort((a, b) => (a.date < b.date ? 1 : -1));
 
     buildTagNav(allProjects);
     render();
@@ -95,10 +99,18 @@ function renderProjectCard(project) {
   const card = document.createElement("article");
   card.className = "project";
 
+  if (project.image) {
+    const img = document.createElement("img");
+    img.className = "project-thumb";
+    img.src = project.image;
+    img.alt = project.title;
+    card.appendChild(img);
+  }
+
   const header = document.createElement("div");
   header.className = "project-header";
   header.innerHTML = `
-    <h2 class="project-title">${escapeHtml(project.title)}</h2>
+    <h2 class="project-title"><a href="project.html?id=${encodeURIComponent(project.id)}">${escapeHtml(project.title)}</a></h2>
     <span class="project-date">${escapeHtml(formatDate(project.date))}</span>
   `;
   card.appendChild(header);
@@ -115,49 +127,8 @@ function renderProjectCard(project) {
   return card;
 }
 
-function renderSubsection(sub) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "subsection";
-
-  const title = document.createElement("h3");
-  title.className = "subsection-title";
-  title.textContent = sub.title;
-  wrapper.appendChild(title);
-
-  const description = document.createElement("p");
-  description.className = "subsection-description";
-  description.textContent = sub.description;
-  wrapper.appendChild(description);
-
-  const badges = document.createElement("div");
-  badges.className = "tag-badges";
-  sub.tags.forEach(tag => {
-    const badge = document.createElement("span");
-    badge.className = "tag-badge";
-    badge.textContent = formatTagLabel(tag);
-    badges.appendChild(badge);
-  });
-  wrapper.appendChild(badges);
-
-  return wrapper;
-}
-
-// ---------- Helpers ----------
-function formatDate(dateStr) {
-  // Expects "YYYY-MM" or "YYYY-MM-DD"
-  const parts = dateStr.split("-");
-  const year = parts[0];
-  const monthIndex = parseInt(parts[1], 10) - 1;
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return monthNames[monthIndex] ? `${monthNames[monthIndex]} ${year}` : dateStr;
-}
-
-function escapeHtml(str) {
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML;
-}
-
 // ---------- Start ----------
 loadProjects();
+
+// Note: formatDate, formatTagLabel, escapeHtml, and renderSubsection now live
+// in common.js, shared with project.js (the detail page).

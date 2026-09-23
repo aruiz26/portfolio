@@ -3,12 +3,15 @@
     {
       "id": "autonomous-rover",
       "title": "Autonomous Rover",
-      "date": "2026-03",
+      "hidden":true,
+      "date": "Present",
+      "image": "images/autonomous-rover.svg",
       "summary": "A four-wheel rover that maps a small room and navigates around obstacles using an ultrasonic sensor array and a custom motor driver board.",
+      "details": "This project started as a way to combine mechanical, electrical, and software work into one system. The rover uses four independently driven wheels, an ultrasonic sensor array mounted on a small pan servo, and a custom motor driver PCB.\n\nThe biggest challenge was tuning the A* path planner to run fast enough on an Arduino Mega, which meant simplifying the occupancy grid resolution and rewriting the heuristic function twice. The final version replans a route in under 200ms after detecting a new obstacle.\n\nFuture work includes adding wheel encoders for better odometry, since the current dead-reckoning drifts noticeably after a few meters.",
       "subsections": [
         {
           "title": "Chassis design",
-          "tags": ["mechanical", "3d-printing"],
+          "tags": ["mechanical", "Manufacturing"],
           "description": "Designed the frame in Fusion 360 and printed it in PETG for durability. Iterated through three versions to fix wheel clearance issues."
         },
         {
@@ -26,8 +29,11 @@
     {
       "id": "solar-tracker",
       "title": "Single-Axis Solar Tracker",
+      "hidden": true, 
       "date": "2025-11",
+      "image": "images/solar-tracker.svg",
       "summary": "A small solar panel mount that rotates to follow the sun across the day, improving energy capture over a fixed panel.",
+      "details": "Built to test how much a simple single-axis tracker could improve on a fixed panel using cheap parts. The frame uses a worm-gear drive specifically because it won't back-drive under wind load, so the panel holds its position without the motor needing to fight gravity or wind between adjustments.\n\nLogged panel output against a fixed reference panel over two weeks; the tracker averaged about 18% more energy captured per day, with the biggest gains in the morning and evening when a fixed panel's angle is furthest from the sun.",
       "subsections": [
         {
           "title": "Slew mechanism",
@@ -46,7 +52,7 @@
         },
         {
           "title": "Mount bracket",
-          "tags": ["3d-printing"],
+          "tags": ["Manufacturing"],
           "description": "Printed a PLA bracket to hold the photoresistor pair at a fixed angle relative to the panel."
         }
       ]
